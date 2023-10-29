@@ -691,7 +691,7 @@ Specify the UE's TUNnel interface and try ping.
 
 <a id="ping_1"></a>
 
-### Case for going through DN 10.45.0.0/16
+### Case for going through PDN 10.45.0.0/16
 
 Run `tcpdump` on VM-DN and check that the packet goes through N6 (enp0s9).
 - `ping google.com` on VM4 (UE)

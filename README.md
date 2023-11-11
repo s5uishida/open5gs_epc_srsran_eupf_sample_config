@@ -701,6 +701,31 @@ listening on enp0s9, link-type EN10MB (Ethernet), snapshot length 262144 bytes
           <idle>-0       [000] dNs31 29810.869484: bpf_trace_printk: upf: bpf_fib_lookup 192.168.14.151 -> 192.168.14.112: nexthop: 192.168.14.112
 ...
 ```
+In addition to `ping`, you may try to access the web by specifying the TUNnel interface with `curl` as follows.
+- `curl google.com` on VM4 (UE)
+```
+# curl --interface tun_srsue google.com
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="http://www.google.com/">here</A>.
+</BODY></HTML>
+```
+- Run `tcpdump` on VM-DN
+```
+15:40:02.982853 IP 10.45.0.2.45530 > 172.217.31.142.80: Flags [S], seq 2171776635, win 64240, options [mss 1460,sackOK,TS val 505975677 ecr 0,nop,wscale 7], length 0
+15:40:02.999878 IP 172.217.31.142.80 > 10.45.0.2.45530: Flags [S.], seq 64001, ack 2171776636, win 65535, options [mss 1460], length 0
+15:40:03.185705 IP 10.45.0.2.45530 > 172.217.31.142.80: Flags [.], ack 1, win 64240, length 0
+15:40:03.185705 IP 10.45.0.2.45530 > 172.217.31.142.80: Flags [P.], seq 1:75, ack 1, win 64240, length 74: HTTP: GET / HTTP/1.1
+15:40:03.185961 IP 172.217.31.142.80 > 10.45.0.2.45530: Flags [.], ack 75, win 65535, length 0
+15:40:03.246718 IP 172.217.31.142.80 > 10.45.0.2.45530: Flags [P.], seq 1:774, ack 75, win 65535, length 773: HTTP: HTTP/1.1 301 Moved Permanently
+15:40:03.307620 IP 10.45.0.2.45530 > 172.217.31.142.80: Flags [.], ack 774, win 63467, length 0
+15:40:03.307781 IP 10.45.0.2.45530 > 172.217.31.142.80: Flags [F.], seq 75, ack 774, win 63467, length 0
+15:40:03.307889 IP 172.217.31.142.80 > 10.45.0.2.45530: Flags [.], ack 76, win 65535, length 0
+15:40:03.324660 IP 172.217.31.142.80 > 10.45.0.2.45530: Flags [F.], seq 774, ack 76, win 65535, length 0
+15:40:03.395149 IP 10.45.0.2.45530 > 172.217.31.142.80: Flags [.], ack 775, win 63467, length 0
+```
 You could now connect to the PDN and send any packets on the network using eUPF.
 
 ---

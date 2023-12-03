@@ -379,7 +379,7 @@ There is no change.
 
 <a id="network_settings"></a>
 
-## Network settings of Open5GS 5GC, eUPF and UERANSIM UE / RAN
+## Network settings of Open5GS 5GC, eUPF and srsRAN 4G ZMQ UE / RAN
 
 <a id="network_settings_up"></a>
 
@@ -398,6 +398,7 @@ Please refer to the following for building Open5GS, eUPF and UERANSIM respective
 
 Install MongoDB on Open5GS EPC C-Plane machine.
 [MongoDB Compass](https://www.mongodb.com/products/compass) is a convenient tool to look at the MongoDB database.
+**See also [this](https://github.com/s5uishida/build_srsran_4g_zmq_disable_rf_plugins) for building srsRAN 4G.**
 
 <a id="run"></a>
 

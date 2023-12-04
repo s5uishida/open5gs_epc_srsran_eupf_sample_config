@@ -50,8 +50,8 @@ The built simulation environment is as follows.
 
 The EPC / eBPF/XDP PGW-U / UE / RAN used are as follows.
 - EPC - Open5GS v2.6.6 (2023.11.04) - https://github.com/open5gs/open5gs
-- eBPF/XDP PGW-U - eUPF `120-upf-ftup-fteid` branch (2023.11.24) - https://github.com/edgecomllc/eupf
-- UE / RAN - srsRAN 4G (2023.06.19) - https://github.com/srsran/srsRAN_4G
+- eBPF/XDP PGW-U - eUPF v0.5.2 (2023.12.04) - https://github.com/edgecomllc/eupf
+- UE / RAN - srsRAN 4G (2023.11.23) - https://github.com/srsran/srsRAN_4G
 
 Each VMs are as follows.  
 | VM | SW & Role | IP address | OS | CPU<br>(Min) | Memory<br>(Min) | HDD<br>(Min) |
@@ -117,8 +117,8 @@ The main information of eNodeB is as follows.
 
 Please refer to the following for building Open5GS, eUPF and srsRAN 4G ZMQ respectively.
 - Open5GS v2.6.6 (2023.11.04) - https://open5gs.org/open5gs/docs/guide/02-building-open5gs-from-sources/
-- eUPF `120-upf-ftup-fteid` branch (2023.11.24) - https://github.com/s5uishida/install_eupf
-- srsRAN 4G (2023.06.19) - https://github.com/s5uishida/build_srsran_4g_zmq_disable_rf_plugins
+- eUPF v0.5.2 (2023.12.04) - https://github.com/s5uishida/install_eupf
+- srsRAN 4G (2023.11.23) - https://github.com/s5uishida/build_srsran_4g_zmq_disable_rf_plugins
 
 <a id="changes_cp"></a>
 
@@ -393,8 +393,8 @@ See [this1](https://github.com/s5uishida/install_eupf#setup-eupf-on-vm-up) and [
 
 Please refer to the following for building Open5GS, eUPF and srsRAN 4G ZMQ UE / RAN respectively.
 - Open5GS v2.6.6 (2023.11.04) - https://open5gs.org/open5gs/docs/guide/02-building-open5gs-from-sources/
-- eUPF `120-upf-ftup-fteid` branch (2023.11.24)- https://github.com/s5uishida/install_eupf
-- srsRAN 4G (2023.06.19) - https://github.com/s5uishida/build_srsran_4g_zmq_disable_rf_plugins
+- eUPF v0.5.2 (2023.12.04)- https://github.com/s5uishida/install_eupf
+- srsRAN 4G (2023.11.23) - https://github.com/s5uishida/build_srsran_4g_zmq_disable_rf_plugins
 
 Install MongoDB on Open5GS EPC C-Plane machine.
 [MongoDB Compass](https://www.mongodb.com/products/compass) is a convenient tool to look at the MongoDB database.
@@ -432,14 +432,14 @@ See [this](https://github.com/s5uishida/install_eupf#run-eupf-on-vm-up).
 ```
 The PFCP association log between eUPF and Open5GS SMF is as follows.
 ```
-2023/11/24 22:43:43 INF Got Association Setup Request from: 192.168.14.111. 
+2023/12/04 22:06:00 INF Got Association Setup Request from: 192.168.14.111. 
 
-2023/11/24 22:43:43 INF 
+2023/12/04 22:06:00 INF 
 Association Setup Request:
   Node ID: 192.168.14.111
-  Recovery Time: 2023-11-24 22:43:43 +0900 JST
+  Recovery Time: 2023-12-04 22:06:00 +0900 JST
 
-2023/11/24 22:43:43 INF Saving new association: &{ID:192.168.14.111 Addr:192.168.14.111 NextSessionID:1 NextSequenceID:1 Sessions:map[] HeartbeatRetries:0 cancelRetries:<nil>}
+2023/12/04 22:06:00 INF Saving new association: &{ID:192.168.14.111 Addr:192.168.14.111 NextSessionID:1 NextSequenceID:1 Sessions:map[] HeartbeatRetries:0 cancelRetries:<nil>}
 ```
 
 <a id="run_ran"></a>
@@ -454,7 +454,7 @@ Run srsRAN 4G ZMQ RAN and connect to Open5GS EPC.
 
 Reading configuration file enb.conf...
 
-Built in Release mode using commit fa56836b1 on branch master.
+Built in Release mode using commit eea87b1d8 on branch master.
 
 Opening 1 channels in RF device=zmq with args=fail_on_disconnect=true,tx_port=tcp://192.168.0.121:2000,rx_port=tcp://192.168.0.122:2001,id=enb,base_srate=23.04e6
 Supported RF device list: zmq file
@@ -464,19 +464,19 @@ Current sample rate is 1.92 MHz with a base rate of 23.04 MHz (x12 decimation)
 CH0 rx_port=tcp://192.168.0.122:2001
 CH0 tx_port=tcp://192.168.0.121:2000
 CH0 fail_on_disconnect=true
-
-==== eNodeB started ===
-Type <t> to view trace
 Current sample rate is 11.52 MHz with a base rate of 23.04 MHz (x2 decimation)
 Current sample rate is 11.52 MHz with a base rate of 23.04 MHz (x2 decimation)
 Setting frequency: DL=2680.0 Mhz, UL=2560.0 MHz for cc_idx=0 nof_prb=50
+
+==== eNodeB started ===
+Type <t> to view trace
 ```
 The Open5GS C-Plane log when executed is as follows.
 ```
-11/24 22:44:20.538: [mme] INFO: eNB-S1 accepted[192.168.0.121]:46068 in s1_path module (../src/mme/s1ap-sctp.c:114)
-11/24 22:44:20.538: [mme] INFO: eNB-S1 accepted[192.168.0.121] in master_sm module (../src/mme/mme-sm.c:108)
-11/24 22:44:20.538: [mme] INFO: [Added] Number of eNBs is now 1 (../src/mme/mme-context.c:2558)
-11/24 22:44:20.538: [mme] INFO: eNB-S1[192.168.0.121] max_num_of_ostreams : 30 (../src/mme/mme-sm.c:150)
+12/04 22:06:26.145: [mme] INFO: eNB-S1 accepted[192.168.0.121]:36371 in s1_path module (../src/mme/s1ap-sctp.c:114)
+12/04 22:06:26.145: [mme] INFO: eNB-S1 accepted[192.168.0.121] in master_sm module (../src/mme/mme-sm.c:108)
+12/04 22:06:26.145: [mme] INFO: [Added] Number of eNBs is now 1 (../src/mme/mme-context.c:2558)
+12/04 22:06:26.145: [mme] INFO: eNB-S1[192.168.0.121] max_num_of_ostreams : 30 (../src/mme/mme-sm.c:150)
 ```
 
 <a id="run_ue"></a>
@@ -489,7 +489,7 @@ Run srsRAN 4G ZMQ UE and connect to Open5GS EPC.
 # ./src/srsue ue.conf
 Reading configuration file ue.conf...
 
-Built in Release mode using commit fa56836b1 on branch master.
+Built in Release mode using commit eea87b1d8 on branch master.
 
 Opening 1 channels in RF device=zmq with args=tx_port=tcp://192.168.0.122:2001,rx_port=tcp://192.168.0.121:2000,id=ue,base_srate=23.04e6
 Supported RF device list: zmq file
@@ -507,50 +507,50 @@ Found Cell:  Mode=FDD, PCI=1, PRB=50, Ports=1, CP=Normal, CFO=-0.2 KHz
 Current sample rate is 11.52 MHz with a base rate of 23.04 MHz (x2 decimation)
 Current sample rate is 11.52 MHz with a base rate of 23.04 MHz (x2 decimation)
 Found PLMN:  Id=00101, TAC=1
-Random Access Transmission: seq=37, tti=341, ra-rnti=0x2
+Random Access Transmission: seq=2, tti=341, ra-rnti=0x2
 RRC Connected
 Random Access Complete.     c-rnti=0x46, ta=0
 Network attach successful. IP: 10.45.0.2
- nTp) 24/11/2023 13:45:7 TZ:99
+ nTp) 4/12/2023 13:7:26 TZ:99
 ```
 The Open5GS C-Plane log when executed is as follows.
 ```
-11/24 22:45:07.159: [mme] INFO: InitialUEMessage (../src/mme/s1ap-handler.c:402)
-11/24 22:45:07.159: [mme] INFO: [Added] Number of eNB-UEs is now 1 (../src/mme/mme-context.c:4434)
-11/24 22:45:07.159: [mme] INFO: Unknown UE by S_TMSI[G:2,C:1,M_TMSI:0xc000002a] (../src/mme/s1ap-handler.c:482)
-11/24 22:45:07.159: [mme] INFO:     ENB_UE_S1AP_ID[1] MME_UE_S1AP_ID[1] TAC[1] CellID[0x19b01] (../src/mme/s1ap-handler.c:578)
-11/24 22:45:07.159: [mme] INFO: Unknown UE by GUTI[G:2,C:1,M_TMSI:0xc000002a] (../src/mme/mme-context.c:3288)
-11/24 22:45:07.160: [mme] INFO: [Added] Number of MME-UEs is now 1 (../src/mme/mme-context.c:3090)
-11/24 22:45:07.160: [emm] INFO: [] Attach request (../src/mme/emm-sm.c:412)
-11/24 22:45:07.160: [emm] INFO:     GUTI[G:2,C:1,M_TMSI:0xc000002a] IMSI[Unknown IMSI] (../src/mme/emm-handler.c:245)
-11/24 22:45:07.206: [emm] INFO: Identity response (../src/mme/emm-sm.c:382)
-11/24 22:45:07.206: [emm] INFO:     IMSI[001010000000100] (../src/mme/emm-handler.c:409)
-11/24 22:45:07.360: [mme] INFO: [Added] Number of MME-Sessions is now 1 (../src/mme/mme-context.c:4448)
-11/24 22:45:07.422: [sgwc] INFO: [Added] Number of SGWC-UEs is now 1 (../src/sgwc/context.c:237)
-11/24 22:45:07.422: [sgwc] INFO: [Added] Number of SGWC-Sessions is now 1 (../src/sgwc/context.c:879)
-11/24 22:45:07.422: [sgwc] INFO: UE IMSI[001010000000100] APN[internet] (../src/sgwc/s11-handler.c:237)
-11/24 22:45:07.423: [gtp] INFO: gtp_connect() [127.0.0.4]:2123 (../lib/gtp/path.c:60)
-11/24 22:45:07.423: [smf] INFO: [Added] Number of SMF-UEs is now 1 (../src/smf/context.c:1010)
-11/24 22:45:07.423: [smf] INFO: [Added] Number of SMF-Sessions is now 1 (../src/smf/context.c:3057)
-11/24 22:45:07.423: [smf] INFO: UE IMSI[001010000000100] APN[internet] IPv4[10.45.0.2] IPv6[] (../src/smf/s5c-handler.c:275)
-11/24 22:45:07.428: [gtp] INFO: gtp_connect() [192.168.13.151]:2152 (../lib/gtp/path.c:60)
-11/24 22:45:07.428: [gtp] INFO: gtp_connect() [127.0.0.4]:2123 (../lib/gtp/path.c:60)
-11/24 22:45:07.731: [emm] INFO: [001010000000100] Attach complete (../src/mme/emm-sm.c:1298)
-11/24 22:45:07.732: [emm] INFO:     IMSI[001010000000100] (../src/mme/emm-handler.c:283)
-11/24 22:45:07.732: [emm] INFO:     UTC [2023-11-24T13:45:07] Timezone[0]/DST[0] (../src/mme/emm-handler.c:290)
-11/24 22:45:07.732: [emm] INFO:     LOCAL [2023-11-24T22:45:07] Timezone[32400]/DST[0] (../src/mme/emm-handler.c:294)
+12/04 22:07:26.411: [mme] INFO: InitialUEMessage (../src/mme/s1ap-handler.c:402)
+12/04 22:07:26.411: [mme] INFO: [Added] Number of eNB-UEs is now 1 (../src/mme/mme-context.c:4434)
+12/04 22:07:26.411: [mme] INFO: Unknown UE by S_TMSI[G:2,C:1,M_TMSI:0xc00003c0] (../src/mme/s1ap-handler.c:482)
+12/04 22:07:26.411: [mme] INFO:     ENB_UE_S1AP_ID[1] MME_UE_S1AP_ID[1] TAC[1] CellID[0x19b01] (../src/mme/s1ap-handler.c:578)
+12/04 22:07:26.411: [mme] INFO: Unknown UE by GUTI[G:2,C:1,M_TMSI:0xc00003c0] (../src/mme/mme-context.c:3288)
+12/04 22:07:26.411: [mme] INFO: [Added] Number of MME-UEs is now 1 (../src/mme/mme-context.c:3090)
+12/04 22:07:26.411: [emm] INFO: [] Attach request (../src/mme/emm-sm.c:412)
+12/04 22:07:26.411: [emm] INFO:     GUTI[G:2,C:1,M_TMSI:0xc00003c0] IMSI[Unknown IMSI] (../src/mme/emm-handler.c:245)
+12/04 22:07:26.465: [emm] INFO: Identity response (../src/mme/emm-sm.c:382)
+12/04 22:07:26.465: [emm] INFO:     IMSI[001010000000100] (../src/mme/emm-handler.c:409)
+12/04 22:07:26.591: [mme] INFO: [Added] Number of MME-Sessions is now 1 (../src/mme/mme-context.c:4448)
+12/04 22:07:26.665: [sgwc] INFO: [Added] Number of SGWC-UEs is now 1 (../src/sgwc/context.c:237)
+12/04 22:07:26.665: [sgwc] INFO: [Added] Number of SGWC-Sessions is now 1 (../src/sgwc/context.c:879)
+12/04 22:07:26.665: [sgwc] INFO: UE IMSI[001010000000100] APN[internet] (../src/sgwc/s11-handler.c:237)
+12/04 22:07:26.666: [gtp] INFO: gtp_connect() [127.0.0.4]:2123 (../lib/gtp/path.c:60)
+12/04 22:07:26.666: [smf] INFO: [Added] Number of SMF-UEs is now 1 (../src/smf/context.c:1010)
+12/04 22:07:26.666: [smf] INFO: [Added] Number of SMF-Sessions is now 1 (../src/smf/context.c:3057)
+12/04 22:07:26.666: [smf] INFO: UE IMSI[001010000000100] APN[internet] IPv4[10.45.0.2] IPv6[] (../src/smf/s5c-handler.c:275)
+12/04 22:07:26.671: [gtp] INFO: gtp_connect() [192.168.13.151]:2152 (../lib/gtp/path.c:60)
+12/04 22:07:26.672: [gtp] INFO: gtp_connect() [127.0.0.4]:2123 (../lib/gtp/path.c:60)
+12/04 22:07:26.990: [emm] INFO: [001010000000100] Attach complete (../src/mme/emm-sm.c:1298)
+12/04 22:07:26.991: [emm] INFO:     IMSI[001010000000100] (../src/mme/emm-handler.c:283)
+12/04 22:07:26.991: [emm] INFO:     UTC [2023-12-04T13:07:26] Timezone[0]/DST[0] (../src/mme/emm-handler.c:290)
+12/04 22:07:26.991: [emm] INFO:     LOCAL [2023-12-04T22:07:26] Timezone[32400]/DST[0] (../src/mme/emm-handler.c:294)
 ```
 The Open5GS U-Plane log when executed is as follows.
 ```
-11/24 22:45:07.445: [sgwu] INFO: UE F-SEID[UP:0x804 CP:0x533] (../src/sgwu/context.c:169)
-11/24 22:45:07.445: [sgwu] INFO: [Added] Number of SGWU-Sessions is now 1 (../src/sgwu/context.c:174)
-11/24 22:45:07.451: [gtp] INFO: gtp_connect() [192.168.13.151]:2152 (../lib/gtp/path.c:60)
-11/24 22:45:07.755: [gtp] INFO: gtp_connect() [192.168.13.121]:2152 (../lib/gtp/path.c:60)
+12/04 22:07:26.668: [sgwu] INFO: UE F-SEID[UP:0x8cc CP:0x4c0] (../src/sgwu/context.c:169)
+12/04 22:07:26.668: [sgwu] INFO: [Added] Number of SGWU-Sessions is now 1 (../src/sgwu/context.c:174)
+12/04 22:07:26.675: [gtp] INFO: gtp_connect() [192.168.13.151]:2152 (../lib/gtp/path.c:60)
+12/04 22:07:26.995: [gtp] INFO: gtp_connect() [192.168.13.121]:2152 (../lib/gtp/path.c:60)
 ```
 The PDU session establishment log of eUPF is as follows.
 ```
-2023/11/24 22:45:07 INF Got Session Establishment Request from: 192.168.14.111.
-2023/11/24 22:45:07 INF 
+2023/12/04 22:07:26 INF Got Session Establishment Request from: 192.168.14.111.
+2023/12/04 22:07:26 INF 
 Session Establishment Request:
   CreatePDR ID: 1 
     FAR ID: 1 
@@ -585,7 +585,7 @@ Session Establishment Request:
     Apply Action: [2 0] 
     Forwarding Parameters:
       Network Instance:internet 
-      Outer Header Creation: &{OuterHeaderCreationDescription:256 TEID:7089 IPv4Address:192.168.13.112 IPv6Address:<nil> PortNumber:0 CTag:0 STag:0} 
+      Outer Header Creation: &{OuterHeaderCreationDescription:256 TEID:42463 IPv4Address:192.168.13.112 IPv6Address:<nil> PortNumber:0 CTag:0 STag:0} 
   CreateFAR ID: 2 
     Apply Action: [2 0] 
     Forwarding Parameters:
@@ -602,13 +602,13 @@ Session Establishment Request:
     Max Bitrate UL: 1000000 
   CreateBAR ID: 1
 
-2023/11/24 22:45:07 INF Saving FAR info to session: 1, {Action:2 OuterHeaderCreation:1 Teid:7089 RemoteIP:1879943360 LocalIP:2534254784 TransportLevelMarking:0}
-2023/11/24 22:45:07 INF WARN: No OuterHeaderCreation
-2023/11/24 22:45:07 INF Saving FAR info to session: 2, {Action:2 OuterHeaderCreation:0 Teid:0 RemoteIP:0 LocalIP:2534254784 TransportLevelMarking:0}
-2023/11/24 22:45:07 INF Saving FAR info to session: 3, {Action:2 OuterHeaderCreation:1 Teid:1 RemoteIP:1863231680 LocalIP:2534254784 TransportLevelMarking:0}
-2023/11/24 22:45:07 INF Saving QER info to session: 1, {GateStatusUL:0 GateStatusDL:0 Qfi:0 MaxBitrateUL:1000000000 MaxBitrateDL:1000000000 StartUL:0 StartDL:0}
-2023/11/24 22:45:07 Matched groups: [permit out 58 from ff02::2/128 to assigned 58 ff02::2 128  assigned  ]
-2023/11/24 22:45:07 INF Session Establishment Request from 192.168.14.111 accepted.
+2023/12/04 22:07:26 INF Saving FAR info to session: 1, {Action:2 OuterHeaderCreation:1 Teid:42463 RemoteIP:1879943360 LocalIP:2534254784 TransportLevelMarking:0}
+2023/12/04 22:07:26 INF WARN: No OuterHeaderCreation
+2023/12/04 22:07:26 INF Saving FAR info to session: 2, {Action:2 OuterHeaderCreation:0 Teid:0 RemoteIP:0 LocalIP:2534254784 TransportLevelMarking:0}
+2023/12/04 22:07:26 INF Saving FAR info to session: 3, {Action:2 OuterHeaderCreation:1 Teid:1 RemoteIP:1863231680 LocalIP:2534254784 TransportLevelMarking:0}
+2023/12/04 22:07:26 INF Saving QER info to session: 1, {GateStatusUL:0 GateStatusDL:0 Qfi:0 MaxBitrateUL:1000000000 MaxBitrateDL:1000000000 StartUL:0 StartDL:0}
+2023/12/04 22:07:26 Matched groups: [permit out 58 from ff02::2/128 to assigned 58 ff02::2 128  assigned  ]
+2023/12/04 22:07:26 INF Session Establishment Request from 192.168.14.111 accepted.
 ```
 The result of `ip addr show` on VM4 (UE) is as follows.
 ```
@@ -632,84 +632,86 @@ Run `tcpdump` on VM-DN and check that the packet goes through N6 (enp0s9).
 - `ping google.com` on VM4 (UE)
 ```
 # ping google.com -I tun_srsue -n
-PING google.com (142.250.198.14) from 10.45.0.2 tun_srsue: 56(84) bytes of data.
-64 bytes from 142.250.198.14: icmp_seq=1 ttl=61 time=64.5 ms
-64 bytes from 142.250.198.14: icmp_seq=2 ttl=61 time=80.8 ms
-64 bytes from 142.250.198.14: icmp_seq=3 ttl=61 time=63.0 ms
+PING google.com (142.251.42.174) from 10.45.0.2 tun_srsue: 56(84) bytes of data.
+64 bytes from 142.251.42.174: icmp_seq=1 ttl=61 time=104 ms
+64 bytes from 142.251.42.174: icmp_seq=2 ttl=61 time=100 ms
+64 bytes from 142.251.42.174: icmp_seq=3 ttl=61 time=54.3 ms
 ```
 - Run `tcpdump` on VM-DN
 ```
 # tcpdump -i enp0s9 -n
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
 listening on enp0s9, link-type EN10MB (Ethernet), snapshot length 262144 bytes
-22:48:48.148579 IP 10.45.0.2 > 142.250.198.14: ICMP echo request, id 4, seq 1, length 64
-22:48:48.166384 IP 142.250.198.14 > 10.45.0.2: ICMP echo reply, id 4, seq 1, length 64
-22:48:49.139789 IP 10.45.0.2 > 142.250.198.14: ICMP echo request, id 4, seq 2, length 64
-22:48:49.179844 IP 142.250.198.14 > 10.45.0.2: ICMP echo reply, id 4, seq 2, length 64
-22:48:50.144394 IP 10.45.0.2 > 142.250.198.14: ICMP echo request, id 4, seq 3, length 64
-22:48:50.165951 IP 142.250.198.14 > 10.45.0.2: ICMP echo reply, id 4, seq 3, length 64
+22:09:53.557071 IP 10.45.0.2 > 142.251.42.174: ICMP echo request, id 4, seq 1, length 64
+22:09:53.573118 IP 142.251.42.174 > 10.45.0.2: ICMP echo reply, id 4, seq 1, length 64
+22:09:54.520266 IP 10.45.0.2 > 142.251.42.174: ICMP echo request, id 4, seq 2, length 64
+22:09:54.566735 IP 142.251.42.174 > 10.45.0.2: ICMP echo reply, id 4, seq 2, length 64
+22:09:55.509262 IP 10.45.0.2 > 142.251.42.174: ICMP echo request, id 4, seq 3, length 64
+22:09:55.524490 IP 142.251.42.174 > 10.45.0.2: ICMP echo reply, id 4, seq 3, length 64
 ```
 - See `/sys/kernel/debug/tracing/trace_pipe` on VM-UP
 ```
 # cat /sys/kernel/debug/tracing/trace_pipe
 ...
-          <idle>-0       [000] d.s31  3446.481789: bpf_trace_printk: upf: gtp-u received
-          <idle>-0       [000] d.s31  3446.481792: bpf_trace_printk: SDF: filter protocol: 4
-          <idle>-0       [000] d.s31  3446.481796: bpf_trace_printk: SDF: filter source ip: 0.0.0.2, destination ip: 0.0.0.0
-          <idle>-0       [000] d.s31  3446.481797: bpf_trace_printk: SDF: filter source ip mask: 255.255.255.255, destination ip mask: 0.0.0.0
-          <idle>-0       [000] d.s31  3446.481798: bpf_trace_printk: SDF: filter source port lower bound: 0, source port upper bound: 65535
-          <idle>-0       [000] d.s31  3446.481799: bpf_trace_printk: SDF: filter destination port lower bound: 0, destination port upper bound: 65535
-          <idle>-0       [000] d.s31  3446.481800: bpf_trace_printk: SDF: packet protocol: 0
-          <idle>-0       [000] d.s31  3446.481801: bpf_trace_printk: SDF: packet source ip: 10.45.0.2, destination ip: 142.250.198.14
-          <idle>-0       [000] d.s31  3446.481802: bpf_trace_printk: SDF: packet source port: 0, destination port: 0
-          <idle>-0       [000] d.s31  3446.481803: bpf_trace_printk: upf: sdf filter doesn't match teid:1
-          <idle>-0       [000] d.s31  3446.481804: bpf_trace_printk: upf: far:1 action:2 outer_header_creation:0
-          <idle>-0       [000] d.s31  3446.481805: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
-          <idle>-0       [000] d.s31  3446.481807: bpf_trace_printk: upf: session for teid:1 far:1 outer_header_removal:0
-          <idle>-0       [000] d.s31  3446.481814: bpf_trace_printk: upf: bpf_fib_lookup 10.45.0.2 -> 142.250.198.14: nexthop: 192.168.16.152
-          <idle>-0       [000] dNs31  3446.499883: bpf_trace_printk: upf: downlink session for ip:10.45.0.2  far:0 action:2
-          <idle>-0       [000] dNs31  3446.499885: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
-          <idle>-0       [000] dNs31  3446.499887: bpf_trace_printk: upf: use mapping 10.45.0.2 -> TEID:7089
-          <idle>-0       [000] dNs31  3446.499889: bpf_trace_printk: upf: send gtp pdu 192.168.13.151 -> 192.168.13.112
-          <idle>-0       [000] dNs31  3446.499896: bpf_trace_printk: upf: bpf_fib_lookup 192.168.13.151 -> 192.168.13.112: nexthop: 192.168.13.112
-          <idle>-0       [000] d.s31  3447.473040: bpf_trace_printk: upf: gtp-u received
-          <idle>-0       [000] d.s31  3447.473044: bpf_trace_printk: SDF: filter protocol: 4
-          <idle>-0       [000] d.s31  3447.473046: bpf_trace_printk: SDF: filter source ip: 0.0.0.2, destination ip: 0.0.0.0
-          <idle>-0       [000] d.s31  3447.473047: bpf_trace_printk: SDF: filter source ip mask: 255.255.255.255, destination ip mask: 0.0.0.0
-          <idle>-0       [000] d.s31  3447.473048: bpf_trace_printk: SDF: filter source port lower bound: 0, source port upper bound: 65535
-          <idle>-0       [000] d.s31  3447.473049: bpf_trace_printk: SDF: filter destination port lower bound: 0, destination port upper bound: 65535
-          <idle>-0       [000] d.s31  3447.473050: bpf_trace_printk: SDF: packet protocol: 0
-          <idle>-0       [000] d.s31  3447.473051: bpf_trace_printk: SDF: packet source ip: 10.45.0.2, destination ip: 142.250.198.14
-          <idle>-0       [000] d.s31  3447.473051: bpf_trace_printk: SDF: packet source port: 0, destination port: 0
-          <idle>-0       [000] d.s31  3447.473052: bpf_trace_printk: upf: sdf filter doesn't match teid:1
-          <idle>-0       [000] d.s31  3447.473053: bpf_trace_printk: upf: far:1 action:2 outer_header_creation:0
-          <idle>-0       [000] d.s31  3447.473054: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
-          <idle>-0       [000] d.s31  3447.473055: bpf_trace_printk: upf: session for teid:1 far:1 outer_header_removal:0
-          <idle>-0       [000] d.s31  3447.473062: bpf_trace_printk: upf: bpf_fib_lookup 10.45.0.2 -> 142.250.198.14: nexthop: 192.168.16.152
-          <idle>-0       [000] d.s31  3447.513327: bpf_trace_printk: upf: downlink session for ip:10.45.0.2  far:0 action:2
-          <idle>-0       [000] d.s31  3447.513329: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
-          <idle>-0       [000] d.s31  3447.513331: bpf_trace_printk: upf: use mapping 10.45.0.2 -> TEID:7089
-          <idle>-0       [000] d.s31  3447.513333: bpf_trace_printk: upf: send gtp pdu 192.168.13.151 -> 192.168.13.112
-          <idle>-0       [000] d.s31  3447.513339: bpf_trace_printk: upf: bpf_fib_lookup 192.168.13.151 -> 192.168.13.112: nexthop: 192.168.13.112
-          <idle>-0       [000] d.s31  3448.477618: bpf_trace_printk: upf: gtp-u received
-          <idle>-0       [000] d.s31  3448.477621: bpf_trace_printk: SDF: filter protocol: 4
-          <idle>-0       [000] d.s31  3448.477623: bpf_trace_printk: SDF: filter source ip: 0.0.0.2, destination ip: 0.0.0.0
-          <idle>-0       [000] d.s31  3448.477624: bpf_trace_printk: SDF: filter source ip mask: 255.255.255.255, destination ip mask: 0.0.0.0
-          <idle>-0       [000] d.s31  3448.477625: bpf_trace_printk: SDF: filter source port lower bound: 0, source port upper bound: 65535
-          <idle>-0       [000] d.s31  3448.477626: bpf_trace_printk: SDF: filter destination port lower bound: 0, destination port upper bound: 65535
-          <idle>-0       [000] d.s31  3448.477627: bpf_trace_printk: SDF: packet protocol: 0
-          <idle>-0       [000] d.s31  3448.477628: bpf_trace_printk: SDF: packet source ip: 10.45.0.2, destination ip: 142.250.198.14
-          <idle>-0       [000] d.s31  3448.477629: bpf_trace_printk: SDF: packet source port: 0, destination port: 0
-          <idle>-0       [000] d.s31  3448.477629: bpf_trace_printk: upf: sdf filter doesn't match teid:1
-          <idle>-0       [000] d.s31  3448.477630: bpf_trace_printk: upf: far:1 action:2 outer_header_creation:0
-          <idle>-0       [000] d.s31  3448.477631: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
-          <idle>-0       [000] d.s31  3448.477632: bpf_trace_printk: upf: session for teid:1 far:1 outer_header_removal:0
-          <idle>-0       [000] d.s31  3448.477639: bpf_trace_printk: upf: bpf_fib_lookup 10.45.0.2 -> 142.250.198.14: nexthop: 192.168.16.152
-          <idle>-0       [000] d.s31  3448.499505: bpf_trace_printk: upf: downlink session for ip:10.45.0.2  far:0 action:2
-          <idle>-0       [000] d.s31  3448.499508: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
-          <idle>-0       [000] d.s31  3448.499509: bpf_trace_printk: upf: use mapping 10.45.0.2 -> TEID:7089
-          <idle>-0       [000] d.s31  3448.499511: bpf_trace_printk: upf: send gtp pdu 192.168.13.151 -> 192.168.13.112
-          <idle>-0       [000] d.s31  3448.499518: bpf_trace_printk: upf: bpf_fib_lookup 192.168.13.151 -> 192.168.13.112: nexthop: 192.168.13.112
+          <idle>-0       [000] d.s31  2273.887446: bpf_trace_printk: upf: gtp-u received
+          <idle>-0       [000] d.s31  2273.887451: bpf_trace_printk: SDF: filter protocol: 4
+          <idle>-0       [000] d.s31  2273.887453: bpf_trace_printk: SDF: filter source ip: 0.0.0.2, destination ip: 0.0.0.0
+          <idle>-0       [000] d.s31  2273.887455: bpf_trace_printk: SDF: filter source ip mask: 255.255.255.255, destination ip mask: 0.0.0.0
+          <idle>-0       [000] d.s31  2273.887456: bpf_trace_printk: SDF: filter source port lower bound: 0, source port upper bound: 65535
+          <idle>-0       [000] d.s31  2273.887457: bpf_trace_printk: SDF: filter destination port lower bound: 0, destination port upper bound: 65535
+          <idle>-0       [000] d.s31  2273.887457: bpf_trace_printk: SDF: packet protocol: 0
+          <idle>-0       [000] d.s31  2273.887458: bpf_trace_printk: SDF: packet source ip: 10.45.0.2, destination ip: 142.251.42.174
+          <idle>-0       [000] d.s31  2273.887459: bpf_trace_printk: SDF: packet source port: 0, destination port: 0
+          <idle>-0       [000] d.s31  2273.887460: bpf_trace_printk: upf: sdf filter doesn't match teid:1
+          <idle>-0       [000] d.s31  2273.887461: bpf_trace_printk: upf: far:1 action:2 outer_header_creation:0
+          <idle>-0       [000] d.s31  2273.887462: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
+          <idle>-0       [000] d.s31  2273.887463: bpf_trace_printk: upf: session for teid:1 far:1 outer_header_removal:0
+          <idle>-0       [000] d.s31  2273.887470: bpf_trace_printk: upf: bpf_fib_lookup 10.45.0.2 -> 142.251.42.174: nexthop: 192.168.16.152
+          <idle>-0       [000] d.s31  2273.903851: bpf_trace_printk: upf: downlink session for ip:10.45.0.2  far:0 action:2
+          <idle>-0       [000] d.s31  2273.903855: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
+          <idle>-0       [000] d.s31  2273.903856: bpf_trace_printk: upf: use mapping 10.45.0.2 -> TEID:42463
+          <idle>-0       [000] d.s31  2273.903858: bpf_trace_printk: upf: send gtp pdu 192.168.13.151 -> 192.168.13.112
+          <idle>-0       [000] d.s31  2273.903865: bpf_trace_printk: upf: bpf_fib_lookup 192.168.13.151 -> 192.168.13.112: nexthop: 192.168.13.112
+          <idle>-0       [000] d.s31  2274.850611: bpf_trace_printk: upf: gtp-u received
+          <idle>-0       [000] d.s31  2274.850615: bpf_trace_printk: SDF: filter protocol: 4
+          <idle>-0       [000] d.s31  2274.850635: bpf_trace_printk: SDF: filter source ip: 0.0.0.2, destination ip: 0.0.0.0
+          <idle>-0       [000] d.s31  2274.850637: bpf_trace_printk: SDF: filter source ip mask: 255.255.255.255, destination ip mask: 0.0.0.0
+          <idle>-0       [000] d.s31  2274.850638: bpf_trace_printk: SDF: filter source port lower bound: 0, source port upper bound: 65535
+          <idle>-0       [000] d.s31  2274.850639: bpf_trace_printk: SDF: filter destination port lower bound: 0, destination port upper bound: 65535
+          <idle>-0       [000] d.s31  2274.850639: bpf_trace_printk: SDF: packet protocol: 0
+          <idle>-0       [000] d.s31  2274.850641: bpf_trace_printk: SDF: packet source ip: 10.45.0.2, destination ip: 142.251.42.174
+          <idle>-0       [000] d.s31  2274.850641: bpf_trace_printk: SDF: packet source port: 0, destination port: 0
+          <idle>-0       [000] d.s31  2274.850642: bpf_trace_printk: upf: sdf filter doesn't match teid:1
+          <idle>-0       [000] d.s31  2274.850643: bpf_trace_printk: upf: far:1 action:2 outer_header_creation:0
+          <idle>-0       [000] d.s31  2274.850644: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
+          <idle>-0       [000] d.s31  2274.850645: bpf_trace_printk: upf: session for teid:1 far:1 outer_header_removal:0
+          <idle>-0       [000] d.s31  2274.850652: bpf_trace_printk: upf: bpf_fib_lookup 10.45.0.2 -> 142.251.42.174: nexthop: 192.168.16.152
+          <idle>-0       [000] d.s31  2274.859868: bpf_trace_printk: upf: arp received. passing to kernel
+          <idle>-0       [000] d.s31  2274.897354: bpf_trace_printk: upf: downlink session for ip:10.45.0.2  far:0 action:2
+          <idle>-0       [000] d.s31  2274.897357: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
+          <idle>-0       [000] d.s31  2274.897358: bpf_trace_printk: upf: use mapping 10.45.0.2 -> TEID:42463
+          <idle>-0       [000] d.s31  2274.897360: bpf_trace_printk: upf: send gtp pdu 192.168.13.151 -> 192.168.13.112
+          <idle>-0       [000] d.s31  2274.897366: bpf_trace_printk: upf: bpf_fib_lookup 192.168.13.151 -> 192.168.13.112: nexthop: 192.168.13.112
+          <idle>-0       [000] d.s31  2274.940148: bpf_trace_printk: upf: arp received. passing to kernel
+          <idle>-0       [000] d.s31  2275.839653: bpf_trace_printk: upf: gtp-u received
+          <idle>-0       [000] d.s31  2275.839657: bpf_trace_printk: SDF: filter protocol: 4
+          <idle>-0       [000] d.s31  2275.839660: bpf_trace_printk: SDF: filter source ip: 0.0.0.2, destination ip: 0.0.0.0
+          <idle>-0       [000] d.s31  2275.839662: bpf_trace_printk: SDF: filter source ip mask: 255.255.255.255, destination ip mask: 0.0.0.0
+          <idle>-0       [000] d.s31  2275.839663: bpf_trace_printk: SDF: filter source port lower bound: 0, source port upper bound: 65535
+          <idle>-0       [000] d.s31  2275.839664: bpf_trace_printk: SDF: filter destination port lower bound: 0, destination port upper bound: 65535
+          <idle>-0       [000] d.s31  2275.839665: bpf_trace_printk: SDF: packet protocol: 0
+          <idle>-0       [000] d.s31  2275.839667: bpf_trace_printk: SDF: packet source ip: 10.45.0.2, destination ip: 142.251.42.174
+          <idle>-0       [000] d.s31  2275.839667: bpf_trace_printk: SDF: packet source port: 0, destination port: 0
+          <idle>-0       [000] d.s31  2275.839668: bpf_trace_printk: upf: sdf filter doesn't match teid:1
+          <idle>-0       [000] d.s31  2275.839669: bpf_trace_printk: upf: far:1 action:2 outer_header_creation:0
+          <idle>-0       [000] d.s31  2275.839670: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
+          <idle>-0       [000] d.s31  2275.839672: bpf_trace_printk: upf: session for teid:1 far:1 outer_header_removal:0
+          <idle>-0       [000] d.s31  2275.839679: bpf_trace_printk: upf: bpf_fib_lookup 10.45.0.2 -> 142.251.42.174: nexthop: 192.168.16.152
+          <idle>-0       [000] d.s31  2275.855139: bpf_trace_printk: upf: downlink session for ip:10.45.0.2  far:0 action:2
+          <idle>-0       [000] d.s31  2275.855142: bpf_trace_printk: upf: qer:0 gate_status:0 mbr:1000000000
+          <idle>-0       [000] d.s31  2275.855143: bpf_trace_printk: upf: use mapping 10.45.0.2 -> TEID:42463
+          <idle>-0       [000] d.s31  2275.855145: bpf_trace_printk: upf: send gtp pdu 192.168.13.151 -> 192.168.13.112
+          <idle>-0       [000] d.s31  2275.855150: bpf_trace_printk: upf: bpf_fib_lookup 192.168.13.151 -> 192.168.13.112: nexthop: 192.168.13.112
 ...
 ```
 In addition to `ping`, you may try to access the web by specifying the TUNnel interface with `curl` as follows.
@@ -725,17 +727,17 @@ The document has moved
 ```
 - Run `tcpdump` on VM-DN
 ```
-22:50:43.183088 IP 10.45.0.2.45184 > 142.250.198.14.80: Flags [S], seq 2230528276, win 64240, options [mss 1460,sackOK,TS val 756114484 ecr 0,nop,wscale 7], length 0
-22:50:43.210373 IP 142.250.198.14.80 > 10.45.0.2.45184: Flags [S.], seq 2688001, ack 2230528277, win 65535, options [mss 1460], length 0
-22:50:43.358549 IP 10.45.0.2.45184 > 142.250.198.14.80: Flags [.], ack 1, win 64240, length 0
-22:50:43.358549 IP 10.45.0.2.45184 > 142.250.198.14.80: Flags [P.], seq 1:75, ack 1, win 64240, length 74: HTTP: GET / HTTP/1.1
-22:50:43.358946 IP 142.250.198.14.80 > 10.45.0.2.45184: Flags [.], ack 75, win 65535, length 0
-22:50:43.433041 IP 142.250.198.14.80 > 10.45.0.2.45184: Flags [P.], seq 1:774, ack 75, win 65535, length 773: HTTP: HTTP/1.1 301 Moved Permanently
-22:50:43.467361 IP 10.45.0.2.45184 > 142.250.198.14.80: Flags [.], ack 774, win 63467, length 0
-22:50:43.467361 IP 10.45.0.2.45184 > 142.250.198.14.80: Flags [F.], seq 75, ack 774, win 63467, length 0
-22:50:43.467568 IP 142.250.198.14.80 > 10.45.0.2.45184: Flags [.], ack 76, win 65535, length 0
-22:50:43.502134 IP 142.250.198.14.80 > 10.45.0.2.45184: Flags [F.], seq 774, ack 76, win 65535, length 0
-22:50:43.541232 IP 10.45.0.2.45184 > 142.250.198.14.80: Flags [.], ack 775, win 63467, length 0
+22:12:54.034643 IP 10.45.0.2.46656 > 142.251.42.174.80: Flags [S], seq 3136920283, win 64240, options [mss 1460,sackOK,TS val 1806129936 ecr 0,nop,wscale 7], length 0
+22:12:54.081409 IP 142.251.42.174.80 > 10.45.0.2.46656: Flags [S.], seq 2624001, ack 3136920284, win 65535, options [mss 1460], length 0
+22:12:54.245911 IP 10.45.0.2.46656 > 142.251.42.174.80: Flags [.], ack 1, win 64240, length 0
+22:12:54.246091 IP 10.45.0.2.46656 > 142.251.42.174.80: Flags [P.], seq 1:75, ack 1, win 64240, length 74: HTTP: GET / HTTP/1.1
+22:12:54.246234 IP 142.251.42.174.80 > 10.45.0.2.46656: Flags [.], ack 75, win 65535, length 0
+22:12:54.317271 IP 142.251.42.174.80 > 10.45.0.2.46656: Flags [P.], seq 1:774, ack 75, win 65535, length 773: HTTP: HTTP/1.1 301 Moved Permanently
+22:12:54.374622 IP 10.45.0.2.46656 > 142.251.42.174.80: Flags [.], ack 774, win 63467, length 0
+22:12:54.374977 IP 10.45.0.2.46656 > 142.251.42.174.80: Flags [F.], seq 75, ack 774, win 63467, length 0
+22:12:54.375153 IP 142.251.42.174.80 > 10.45.0.2.46656: Flags [.], ack 76, win 65535, length 0
+22:12:54.398907 IP 142.251.42.174.80 > 10.45.0.2.46656: Flags [F.], seq 774, ack 76, win 65535, length 0
+22:12:54.461398 IP 10.45.0.2.46656 > 142.251.42.174.80: Flags [.], ack 775, win 63467, length 0
 ```
 You could now connect to the PDN and send any packets on the network using eUPF.
 
@@ -748,5 +750,6 @@ I would like to thank the excellent developers and all the contributors of Open5
 
 ## Changelog (summary)
 
+- [2023.12.04] Updated as eUPF FTUP feature has been merged into `main` branch.
 - [2023.11.24] Updated to eUPF `120-upf-ftup-fteid` branch that supports FTUP.
 - [2023.10.29] Initial release.

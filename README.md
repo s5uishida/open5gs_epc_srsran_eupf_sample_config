@@ -50,7 +50,7 @@ The built simulation environment is as follows.
 
 The EPC / eBPF/XDP PGW-U / UE / RAN used are as follows.
 - EPC - Open5GS v2.7.0 (2023.12.04) - https://github.com/open5gs/open5gs
-- eBPF/XDP PGW-U - eUPF v0.5.2 (2023.12.04) - https://github.com/edgecomllc/eupf
+- eBPF/XDP PGW-U - eUPF v0.6.0 (2023.12.04) - https://github.com/edgecomllc/eupf
 - UE / RAN - srsRAN 4G (2023.11.23) - https://github.com/srsran/srsRAN_4G
 
 Each VMs are as follows.  
@@ -117,7 +117,7 @@ The main information of eNodeB is as follows.
 
 Please refer to the following for building Open5GS, eUPF and srsRAN 4G ZMQ respectively.
 - Open5GS v2.7.0 (2023.12.04) - https://open5gs.org/open5gs/docs/guide/02-building-open5gs-from-sources/
-- eUPF v0.5.2 (2023.12.04) - https://github.com/s5uishida/install_eupf
+- eUPF v0.6.0 (2023.12.04) - https://github.com/s5uishida/install_eupf
 - srsRAN 4G (2023.11.23) - https://github.com/s5uishida/build_srsran_4g_zmq_disable_rf_plugins
 
 <a id="changes_cp"></a>
@@ -383,7 +383,7 @@ See [this1](https://github.com/s5uishida/install_eupf#setup-eupf-on-vm-up) and [
 
 Please refer to the following for building Open5GS, eUPF and srsRAN 4G ZMQ UE / RAN respectively.
 - Open5GS v2.7.0 (2023.12.04) - https://open5gs.org/open5gs/docs/guide/02-building-open5gs-from-sources/
-- eUPF v0.5.2 (2023.12.04)- https://github.com/s5uishida/install_eupf
+- eUPF v0.6.0 (2023.12.04)- https://github.com/s5uishida/install_eupf
 - srsRAN 4G (2023.11.23) - https://github.com/s5uishida/build_srsran_4g_zmq_disable_rf_plugins
 
 Install MongoDB on Open5GS EPC C-Plane machine.
@@ -737,6 +737,7 @@ I would like to thank the excellent developers and all the contributors of Open5
 
 ## Changelog (summary)
 
+- [2023.12.05] The eUPF version confirmed to work in the changelog on 2023.12.04 has been tagged as `v0.6.0`.
 - [2023.12.05] Updated to Open5GS v2.7.0.
 - [2023.12.04] Updated as eUPF FTUP feature has been merged into `main` branch.
 - [2023.11.24] Updated to eUPF `120-upf-ftup-fteid` branch that supports FTUP.

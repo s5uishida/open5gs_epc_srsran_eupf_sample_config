@@ -726,6 +726,25 @@ The document has moved
 00:05:55.914972 IP 142.251.42.174.80 > 10.45.0.2.59538: Flags [F.], seq 774, ack 76, win 65535, length 0
 00:05:55.983055 IP 10.45.0.2.59538 > 142.251.42.174.80: Flags [.], ack 775, win 63467, length 0
 ```
+Also, when trying iperf3 client on VM4 (UE), first change the default GW interface to `tun_srsue`. Below is an example of my VirtualBox VM (VM4).
+```
+# ip link set dev enp0s3 down
+# ip route add default dev tun_srsue
+```
+Next, to avoid IP fragmentation, change the MTU of both SGi interface of eUPF and `tun_srsue` interface of srsRAN_4G UE as follows.
+
+- For SGi interface of eUPF:
+  ```
+  # ip link set enp0s16 mtu 1450
+  ```
+- For `tun_srsue` interface of srsRAN_4G UE:
+  ```
+  # ip link set tun_srsue mtu 1400
+  ```
+Then, bind the assigned IP address `10.45.0.2` and run iperf3 client. The following is an example of connecting to iperf3 server running on VM-DN `192.168.16.152`.
+```
+# iperf3 -B 10.45.0.2 -c 192.168.16.152
+```
 You could now connect to the PDN and send any packets on the network using eUPF.
 
 ---

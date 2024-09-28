@@ -731,18 +731,10 @@ Also, when trying iperf3 client on VM4 (UE), first change the default GW interfa
 # ip link set dev enp0s3 down
 # ip route add default dev tun_srsue
 ```
-Next, to avoid IP fragmentation, change the MTU of both SGi interface of eUPF and `tun_srsue` interface of srsRAN_4G UE as follows.
-
-- For SGi interface of eUPF:
-  
-  ```
-  # ip link set enp0s16 mtu 1450
-  ```
-- For `tun_srsue` interface of srsRAN_4G UE:
-  
-  ```
-  # ip link set tun_srsue mtu 1400
-  ```
+Next, to avoid IP fragmentation, change the MTU of `tun_srsue` interface of srsRAN_4G UE as follows.
+```
+# ip link set tun_srsue mtu 1450
+```
 Then, bind the assigned IP address `10.45.0.2` and run iperf3 client. The following is an example of connecting to iperf3 server running on VM-DN `192.168.16.152`.
 ```
 # iperf3 -B 10.45.0.2 -c 192.168.16.152

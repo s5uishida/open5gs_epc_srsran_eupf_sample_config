@@ -734,10 +734,12 @@ Also, when trying iperf3 client on VM4 (UE), first change the default GW interfa
 Next, to avoid IP fragmentation, change the MTU of both SGi interface of eUPF and `tun_srsue` interface of srsRAN_4G UE as follows.
 
 - For SGi interface of eUPF:
+  
   ```
   # ip link set enp0s16 mtu 1450
   ```
 - For `tun_srsue` interface of srsRAN_4G UE:
+  
   ```
   # ip link set tun_srsue mtu 1400
   ```

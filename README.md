@@ -57,8 +57,8 @@ Each VMs are as follows.
 | VM | SW & Role | IP address | OS | CPU<br>(Min) | Mem<br>(Min) | HDD<br>(Min) |
 | --- | --- | --- | --- | --- | --- | --- |
 | VM1 | Open5GS EPC C-Plane | 192.168.0.111/24 | Ubuntu 24.04 | 1 | 2GB | 20GB |
-| VM2 | Open5GS EPC U-Plane(SGW-U) | 192.168.0.112/24 | Ubuntu 24.04 | 1 | 1GB | 20GB |
-| VM-UP | eUPF U-Plane(PGW-U) | 192.168.0.151/24 | Ubuntu 24.04 | 1 | 2GB | 20GB |
+| VM2 | Open5GS EPC U-Plane (SGW-U) | 192.168.0.112/24 | Ubuntu 24.04 | 1 | 1GB | 20GB |
+| VM-UP | eUPF U-Plane (PGW-U) | 192.168.0.151/24 | Ubuntu 24.04 | 1 | 2GB | 20GB |
 | VM-DN | Data Network Gateway  | 192.168.0.152/24 | Ubuntu 24.04 | 1 | 1GB | 10GB |
 | VM3 | srsRAN 4G ZMQ RAN (eNodeB) | 192.168.0.121/24 | Ubuntu 22.04 | 1 | 2GB | 10GB |
 | VM4 | srsRAN 4G ZMQ UE | 192.168.0.122/24 | Ubuntu 22.04 | 1 | 2GB | 10GB |

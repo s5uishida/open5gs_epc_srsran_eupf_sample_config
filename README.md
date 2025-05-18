@@ -418,11 +418,12 @@ See [this](https://github.com/s5uishida/install_eupf#run-eupf-on-vm-up).
 ### Run Open5GS EPC C-Plane
 
 ```
+./install/bin/open5gs-hssd &
+./install/bin/open5gs-pcrfd &
+sleep 1
 ./install/bin/open5gs-mmed &
 ./install/bin/open5gs-sgwcd &
 ./install/bin/open5gs-smfd &
-./install/bin/open5gs-hssd &
-./install/bin/open5gs-pcrfd &
 ```
 The PFCP association log between eUPF and Open5GS SMF is as follows.
 ```

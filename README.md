@@ -674,9 +674,9 @@ Also, when trying iperf3 client on VM4 (UE), first change the default GW interfa
 # ip link set dev ens18 down
 # ip route add default dev tun_srsue
 ```
-Next, to avoid IP fragmentation, change the MTU of `tun_srsue` interface of srsRAN_4G UE as follows.
+Next, to avoid IP fragmentation, set as follows according to the instructions in [here](https://github.com/s5uishida/simple_confirmed_info_for_mobile_network#footnotes) [7].
 ```
-# ip link set tun_srsue mtu 1450
+# ip link set tun_srsue mtu 1464
 ```
 Then, bind the assigned IP address `10.45.0.2` and run iperf3 client. The following is an example of connecting to iperf3 server running on VM-DN `192.168.16.152`.
 ```

@@ -671,8 +671,7 @@ The document has moved
 ```
 Also, when trying iperf3 client on VM4 (UE), first change the default GW interface to `tun_srsue`. Below is an example of my environment (VM4).
 ```
-# ip link set dev ens18 down
-# ip route add default dev tun_srsue
+# ip route change default dev tun_srsue
 ```
 Next, to avoid IP fragmentation, set as follows according to the instructions in [here](https://github.com/s5uishida/simple_confirmed_info_for_mobile_network#footnotes) [7].
 ```

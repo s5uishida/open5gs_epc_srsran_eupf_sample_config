@@ -373,7 +373,7 @@ There is no change.
 
 <a id="network_settings"></a>
 
-## Network settings of Open5GS 5GC, eUPF and srsRAN 4G ZMQ UE / RAN
+## Network settings of Open5GS EPC, eUPF and srsRAN 4G ZMQ UE / RAN
 
 <a id="network_settings_up"></a>
 
